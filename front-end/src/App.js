@@ -1,15 +1,15 @@
 import React from 'react';
-import './App.css';
-import rockGlass from './images/rockGlass.svg';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
 
 function App() {
   return (
-    <div className="App">
-      <span className="logo">TRYBE</span>
-      <object className="rocksGlass" type="image/svg+xml" data={ rockGlass }>
-        Glass
-      </object>
-    </div>
+    <Switch>
+      <Route path="/login" component={ Login } />
+      <Route path="/register" component={ Register } />
+      <Route exact path="/" render={ () => <Redirect to="/login" /> } />
+    </Switch>
   );
 }
 

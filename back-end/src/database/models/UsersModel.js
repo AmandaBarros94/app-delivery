@@ -26,6 +26,7 @@ UsersModel.init(
     role: {
       type: DataTypes.STRING,
       allowNull: false,
+      defaultValue: "customer",
     },
   },
   {
@@ -37,5 +38,6 @@ UsersModel.init(
 );
 
 module.exports = {
-  UsersModel,
-}
+  UsersModel
+};
+
