@@ -1,7 +1,7 @@
 const { StatusCodes } = require('http-status-codes');
 const OrderService = require('./OrderService');
 
-export default class OrderController {
+class OrderController {
     constructor(orderService = new OrderService()) {
         this.orderService = orderService;
     }
@@ -39,3 +39,5 @@ export default class OrderController {
         return res.status(StatusCodes.OK).json(response);
     }
 }
+
+module.exports = OrderController;

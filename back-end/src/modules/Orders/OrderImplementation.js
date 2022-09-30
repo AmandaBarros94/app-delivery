@@ -5,7 +5,7 @@ const SalesProductModel = require('../../database/models/SaleProductModel');
 const { sequelize } = require('../../database/models');
 const CustomError = require('../../utils/CustomError');
 
-export default class SaleImplementation {
+class SaleImplementation {
     constructor(
         sequelizeSaleModel = SaleModel,
         sequelizeUserModel = UsersModel,
@@ -95,3 +95,5 @@ async updateSaleStatus(saleInformation) {
     return sale;
 }
 }
+
+module.exports = SaleImplementation;

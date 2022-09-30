@@ -1,7 +1,7 @@
 const OrderImplementation = require('./OrderImplementation');
 const CustomError = require('../../utils/CustomError');
 
-export default class OrderService {
+class OrderService {
   constructor(orderImplementation = new OrderImplementation()) {
     this.orderImplementation = orderImplementation;
   }
@@ -31,3 +31,5 @@ export default class OrderService {
     return response;
   }
 }
+
+module.exports = OrderService;
