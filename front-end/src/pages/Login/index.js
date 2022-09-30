@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { requestLogin } from '../../Services/request';
+/* import savLocalStorage from '../../helper/savLocalStorage'; */
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  /*   const [setName] = useContext(AppContext); */
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
@@ -21,6 +23,8 @@ function Login() {
       // const { role } = await requestData('/login/validate', { email, password });
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
+      /*       setName(response.data.name);
+      savLocalStorage('user', response.data); */
       setIsLogged(true);
       Navigate('/consumer/products');
     } catch (error) {
@@ -89,6 +93,13 @@ function Login() {
             disabled={ isDisabled }
             onClick={ (e) => login(e) }
             data-testid="common_login__button-login"
+            //  onClick={ (e) => {
+            //    e.preventDefault();
+            //  </form>  createPost(loginEmail, password)
+            //      .then((data) => {
+            //        navigate('/customer/products');
+            //        localStorage.setItem('user', JSON.stringify(data));
+            //  });
           >
             Login
           </button>
