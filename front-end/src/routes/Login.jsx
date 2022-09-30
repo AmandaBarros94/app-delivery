@@ -4,8 +4,8 @@ import { Login, Register } from '../pages';
 export default function LoginRoutes() {
   return (
     <Switch>
-      <Route path="/login" element={ Login } />
-      <Route path="/register" element={ Register } />
+      <Route path="/login" component={ Login } />
+      <Route path="/register" component={ Register } />
       <Route exact path="/" element={ <Redirect to="/login" /> } />
     </Switch>
   );

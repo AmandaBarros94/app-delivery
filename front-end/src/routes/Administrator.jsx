@@ -6,7 +6,7 @@ export default function AdministratorRoute() {
   return (
     <AdminProvider>
       <Switch>
-        <Route path="/admin/manage" element={ <Administrator /> } />
+        <Route path="/admin/manage" component={ Administrator } />
       </Switch>
     </AdminProvider>
   );
