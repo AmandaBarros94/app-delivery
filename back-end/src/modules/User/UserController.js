@@ -8,7 +8,7 @@ class UserController {
 
     async loginUser(req, res) {
         const loginInformations = req.body;
-
+    console.log(loginInformations)
         const response = await this.userService.loginUser(loginInformations);
         
         return res.status(StatusCodes.OK).json(response);

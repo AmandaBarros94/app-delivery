@@ -1,11 +1,9 @@
-const UserModel = require('./UserModel');
-const ProductModel = require('./ProductModel');
-const SaleModel = require('./ProductModel');
-const SaleProductModel = require('./ProductModel');
+require('dotenv/config');
 
-module.exports = {
-  UserModel,
-  ProductModel,
-  SaleModel,
-  SaleProductModel,
-}
+const { Sequelize } = require('sequelize');
+const config = require('../config/config');
+
+const { NODE_ENV } = process.env;
+const sequelize = new Sequelize(config[NODE_ENV] || config.development);
+
+module.exports = { sequelize };

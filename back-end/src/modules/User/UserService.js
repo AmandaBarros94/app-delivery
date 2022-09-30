@@ -10,7 +10,7 @@ class UserService {
 
   async loginUser(loginInformations) {
     const hashedUser = generateHash(loginInformations);
-
+   console.log(hashedUser);
     const foundUser = await this.userImplementation.loginUser(hashedUser);
     console.log(foundUser);
     if (!foundUser) {

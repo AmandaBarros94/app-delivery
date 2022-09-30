@@ -10,7 +10,7 @@ class LoginValidation {
 
     validateLogin(req, _res, next) {
         const { error } = this.schema.safeParse(req.body);
-
+        
         if (error) {
             const { issues: [{ message }] } = error;
 

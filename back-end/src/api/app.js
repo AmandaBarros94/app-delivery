@@ -1,7 +1,7 @@
 require('express-async-errors');
 const express = require('express');
 const cors = require('cors');
-const router = require('./router');
+// const router = require('./router');
 const routes = require('./routes');
 const ErrorHandler = require('../middlewares/ErrorHandler');
 
@@ -14,7 +14,6 @@ class App {
     this.app.use(express.json());
     this.app.use(cors());
 
-    this.app.use(router);
     this.app.use(routes);
     
     this.app.use(ErrorHandler.handle);
