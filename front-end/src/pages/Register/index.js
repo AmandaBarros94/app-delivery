@@ -141,8 +141,15 @@ function Register() {
       <button
         data-testid="common_register__button-register"
         type="submit"
-        onClick={ (event) => createUser(event) }
         disabled={ isDisabled }
+        onClick={ (event) => createUser(event) }
+        //  onClick={ (e) => {
+        //  e.preventDefault();
+        //  </form>  createUser(setName, setEmail, setPassword)
+        //    .then((data) => {
+        //      navigate('/customer/products');
+        //      localStorage.setItem('user', JSON.stringify(data));
+        //    });
       >
         Cadastrar
       </button>

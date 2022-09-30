@@ -2,6 +2,7 @@ import axios from 'axios';
 import { getToken } from '../utils/authorization';
 
 const url = process.env.REACT_APP_LOCALHOST || 'http://localhost:3001';
+/* const urlProducts = 'http://localhost:3001/products'; */
 
 const api = axios.create({
   baseURL: `${url}`,
@@ -81,6 +82,10 @@ export const postCreate = async (body) => {
   return data;
 };
 
+/* export const getProducts = async () => axios.get(urlProducts)
+  .then(({ data }) => data);
+ */
+
 export const getUserSallers = async () => {
   const { data } = await api.get('/users/sellers');
   return data;
@@ -109,3 +114,7 @@ export const salesRequest = async (orderInfo, token) => {
   });
   return data;
 };
+
+/* export const getProducts = async () => axios.get(urlProducts)
+  .then(({ data }) => data);
+ */
