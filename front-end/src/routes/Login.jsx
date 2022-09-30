@@ -6,7 +6,7 @@ export default function LoginRoutes() {
     <Switch>
       <Route path="/login" component={ Login } />
       <Route path="/register" component={ Register } />
-      <Route exact path="/" element={ <Redirect to="/login" /> } />
+      <Route exact path="/" render={ () => <Redirect to="/login" /> } />
     </Switch>
   );
 }
