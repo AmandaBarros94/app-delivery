@@ -1,7 +1,7 @@
-const { SaleModel } = require('../../database/models/SalesModel');
-const { UsersModel } = require('../../database/models/UsersModel');
-const { ProductModel } = require('../../database/models/ProductModel');
-const { SalesProductModel } = require('../../database/models/SalesProductsModel');
+const SaleModel = require('../../database/models/SaleModel');
+const UsersModel = require('../../database/models/UserModel');
+const ProductModel = require('../../database/models/ProductModel');
+const SalesProductModel = require('../../database/models/SaleProductModel');
 const { sequelize } = require('../../database/models');
 const CustomError = require('../../utils/CustomError');
 
