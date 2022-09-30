@@ -1,7 +1,7 @@
-import AdministratorRoutes from './Administrator';
-import LoginRoutes from './Login';
+// import AdministratorRoutes from './Administrator';
+// import LoginRoutes from './Login';
 
-export {
-  AdministratorRoutes,
-  LoginRoutes,
-};
+// export {
+//   AdministratorRoutes,
+//   LoginRoutes,
+// };
