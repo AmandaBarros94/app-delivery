@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import propTypes from 'prop-types';
-import savLocalStorage from '../helper/savLocalStorage';
+import savLocalStorage from '../utils/saveLocalStorage';
 import AppContext from '../context/AppContext';
 
 function ProductCard({ id, name, price, image }) {
