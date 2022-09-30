@@ -24,7 +24,7 @@ export default function CheckOutPage() {
   const { order, setOrder } = useContext(AppContext);
   const navigate = useHistory();
 
-  useEffect(() => {
+  const handleOnload = async () => {
     const orderFromLocalStorage = JSON.parse(localStorage.getItem('order'));
     const userFromLocalStorage = JSON.parse(localStorage.getItem('user'));
     setOrder(orderFromLocalStorage);
@@ -35,7 +35,11 @@ export default function CheckOutPage() {
       setUserSallers(response);
     };
     fetchUserSallers();
-  }, []);
+  };
+
+  useEffect(() => {
+    handleOnload();
+  });
 
   // useEffect(() => {
   //   const totalPrice = calculateAmount(order);
