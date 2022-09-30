@@ -19,7 +19,7 @@ function Login() {
     try {
       const { token, role } = await requestLogin({ email, password });
       console.log(token);
-      setToken(token);
+      // setToken(token);
       // const { role } = await requestData('/login/validate', { email, password });
       localStorage.setItem('token', token);
       localStorage.setItem('role', role);
@@ -57,7 +57,7 @@ function Login() {
   }, [email, password]);
 
   if (isLogged) {
-    Navigate('/consumer/products');
+    Navigate.push('/consumer/products');
   } else {
     return (
       <div>
@@ -105,7 +105,7 @@ function Login() {
           </button>
           <button
             type="button"
-            onClick={ () => Navigate('/register') }
+            onClick={ () => Navigate.push('/register') }
             data-testid="common_login__button-register"
           >
             Register

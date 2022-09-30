@@ -62,7 +62,7 @@ export const requestData = async (endpoint) => {
 };
 
 export const requestLogin = async (UserInfos) => {
-  const { data } = await api.post('/login', { ...UserInfos });
+  const { data } = await api.post('users/login', { ...UserInfos });
   return data;
 };
 
@@ -77,7 +77,7 @@ export const requestUserByEmail = async (endpoint) => {
 
 export const postCreate = async (body) => {
   console.log('oi');
-  const { data } = await api.post('/register', { ...body });
+  const { data } = await api.post('users/register', { ...body });
   console.log('oi', data);
   return data;
 };
