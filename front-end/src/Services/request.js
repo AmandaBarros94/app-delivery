@@ -29,3 +29,32 @@ export const postCreate = async (body) => {
   const { data } = await api.post('/users/register', { ...body });
   return data;
 };
+
+export const getUserSallers = async () => {
+  const { data } = await api.get('/users/sellers');
+  return data;
+};
+
+export const salesRequest = async (orderInfo, token) => {
+  const {
+    deliveryAddress,
+    sellerId,
+    totalPrice,
+    deliveryNumber,
+    userId,
+    order,
+  } = orderInfo;
+  const salesApi = axios.create({
+    baseURL: `${url}`,
+    headers: { authorization: token },
+  });
+  const { data } = await salesApi.post('/sales', {
+    deliveryAddress,
+    sellerId,
+    totalPrice,
+    deliveryNumber,
+    userId,
+    order,
+  });
+  return data;
+};
