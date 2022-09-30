@@ -1,11 +1,24 @@
 const { StatusCodes } = require('http-status-codes');
 const CustomError = require('../../utils/CustomError');
-const registerSchema = require('./RegisterSchema');
+const registerSchema = require('./AdminSchema');
 
-class RegisterValidation {
+class AdminValidator {
     constructor(schema = registerSchema) {
         this.schema = schema;
         this.validateRegister = this.validateRegister.bind(this);
+    }
+
+    static authenticateAdm(req, _res, next) {
+        const { role } = req.user;
+
+        if (role !== 'administrator') {
+            next(new CustomError(
+                StatusCodes.UNAUTHORIZED,
+                'user must be administrator to create a user',
+            ));
+        }
+
+        next();
     }
 
     validateRegister(req, _res, next) {
@@ -22,4 +35,4 @@ class RegisterValidation {
     }
 }
 
-module.exports = RegisterValidation;
+module.exports = AdminValidator;

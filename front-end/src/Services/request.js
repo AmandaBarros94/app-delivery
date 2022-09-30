@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from '../utils/authorization';
 
 const url = process.env.REACT_APP_LOCALHOST || 'http://localhost:3001';
 
@@ -6,13 +7,61 @@ const api = axios.create({
   baseURL: `${url}`,
 });
 
+export async function getAPI(endpoint, isProtected) {
+  const requestConfig = {};
+
+  if (isProtected) {
+    const token = getToken();
+    requestConfig.headers = { authorization: token };
+  }
+
+  const { data } = await axios.get(`${url}/${endpoint}`, requestConfig);
+
+  return data;
+}
+
+export const postAPI = async (endpoint, userInfo, isProtected) => {
+  const requestConfig = {};
+
+  if (isProtected) {
+    const token = getToken();
+    requestConfig.headers = { authorization: token };
+  }
+
+  try {
+    const { data } = await axios.post(`${url}/${endpoint}`, userInfo, requestConfig);
+
+    return data;
+  } catch (error) {
+    const errorStatus = error.response?.status;
+    if (errorStatus === null) {
+      throw error;
+    }
+
+    return { errorCode: errorStatus };
+  }
+};
+
+export async function deleteAPI(endpoint, id, isProtected) {
+  const requestConfig = {};
+
+  if (isProtected) {
+    const token = getToken();
+    requestConfig.headers = { authorization: token };
+  }
+
+  const { data } = await axios.delete(`${url}/${endpoint}/${id}`, requestConfig);
+
+  return data;
+}
+
 export const requestData = async (endpoint) => {
   const { data } = await api.get(endpoint);
   return data;
 };
 
 export const requestLogin = async (UserInfos) => {
-  const { data } = await api.post('/users/login', { ...UserInfos });
+  const { data } = await api.post('/login', { ...UserInfos });
   return data;
 };
 
@@ -26,7 +75,9 @@ export const requestUserByEmail = async (endpoint) => {
 };
 
 export const postCreate = async (body) => {
-  const { data } = await api.post('/users/register', { ...body });
+  console.log('oi');
+  const { data } = await api.post('/register', { ...body });
+  console.log('oi', data);
   return data;
 };
 

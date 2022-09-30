@@ -1,4 +1,4 @@
-const { sequelize } = require(".");
+const sequelize = require("..");
 const { Model, DataTypes } = require("sequelize");
 
 class ProductModel extends Model {}
@@ -32,6 +32,4 @@ ProductModel.init(
   }
 );
 
-module.exports = {
-  ProductModel,
-}
+module.exports = ProductModel;

@@ -1,11 +1,11 @@
-const { sequelize } = require(".");
+const sequelize = require("..");
 const { Model, DataTypes } = require("sequelize");
 const { ProductModel } = require("./ProductModel");
 const { SaleModel } = require("./SaleModel");
 
-class SalesProductModel extends Model {}
+class SaleProductModel extends Model {}
 
-SalesProductModel.init(
+SaleProductModel.init(
   {
     saleId: {
       type: DataTypes.INTEGER,
@@ -39,6 +39,4 @@ SalesProductModel.init(
   }
 );
 
-module.exports = {
-  SalesProductModel,
-}
+module.exports = SaleProductModel;

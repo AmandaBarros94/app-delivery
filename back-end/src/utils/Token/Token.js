@@ -8,6 +8,7 @@ class Token {
 
     generate(data) {
       const token = jwt.sign({ data }, this.secret);
+
       return token;
     }
 

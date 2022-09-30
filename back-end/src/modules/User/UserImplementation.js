@@ -1,9 +1,9 @@
 const { Op } = require('sequelize');
-const { UsersModel } = require('../../database/models/UsersModel');
+const { UserModel } = require('../../database/models/UserModel');
 const CustomError = require('../../utils/CustomError');
 
 class UserImplementation {
-    constructor(userModel = UsersModel) {
+    constructor(userModel = UserModel) {
         this.userModel = userModel;
     }
 

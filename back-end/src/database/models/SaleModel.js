@@ -1,4 +1,4 @@
-const { sequelize } = require(".");
+const sequelize = require("..");
 const { Model, DataTypes } = require("sequelize");
 const { UserModel } = require("./UserModel");
 const { ProductModel } = require("./ProductModel");
@@ -69,6 +69,4 @@ UserModel.hasMany(SaleModel, { foreignKey: "sellerId", as: "sales" });
 ProductModel.belongsToMany(SaleModel, { through: SaleProductModel, foreignKey: 'productId', as: "productsSales" });
 SaleModel.belongsToMany(ProductModel, { through: SaleProductModel, foreignKey: 'saleId', as: "salesProducts" });
 
-module.exports = {
-  SaleModel
-}
+module.exports = SaleModel;

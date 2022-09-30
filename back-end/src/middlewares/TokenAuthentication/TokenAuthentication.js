@@ -10,16 +10,18 @@ class TokenAuthentication {
 
     async verifyToken(req, _res, next) {
         const { authorization } = req.headers;
-    
+
         if (!authorization) {
-        throw new CustomError(this.notFound, 'Token not found');
+            throw new CustomError(this.notFound, 'Token not found');
         }
     
         const { data } = Token.verify(authorization);
-    
+        
         if (!data) {
-        throw new CustomError(this.badRequest, 'Invalid or expired token');
+            throw new CustomError(this.badRequest, 'Invalid or expired token');
         }
+        
+        req.user = data;
     
         next();
     }

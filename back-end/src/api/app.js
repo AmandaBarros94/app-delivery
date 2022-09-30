@@ -1,8 +1,9 @@
 require('express-async-errors');
 const express = require('express');
 const cors = require('cors');
-const ErrorHandler = require('../middlewares/ErrorHandler');
+const router = require('./router');
 const routes = require('./routes');
+const ErrorHandler = require('../middlewares/ErrorHandler');
 
 const API_PORT = 3001;
 
@@ -11,9 +12,9 @@ class App {
     this.app = app;
 
     this.app.use(express.json());
-
     this.app.use(cors());
 
+    this.app.use(router);
     this.app.use(routes);
     
     this.app.use(ErrorHandler.handle);

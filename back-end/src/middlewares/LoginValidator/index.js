@@ -1,5 +1,5 @@
 const loginSchema = require('./loginSchema');
-const LoginValidation = require('./loginValidation');
+const LoginValidation = require('./LoginValidation');
 
 const loginValidation = new LoginValidation(loginSchema);
 
