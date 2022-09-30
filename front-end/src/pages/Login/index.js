@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { requestLogin } from '../../Services/request';
 /* import savLocalStorage from '../../helper/savLocalStorage'; */
 
@@ -10,7 +10,7 @@ function Login() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
-  const Navigate = useNavigate();
+  const Navigate = useHistory();
   const REGEX_EMAIL = /\S+@\S+\.\S+/;
 
   const login = async (event) => {

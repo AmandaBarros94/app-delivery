@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { postCreate, setToken } from '../../Services/request';
 
 function Register() {
@@ -10,7 +10,7 @@ function Register() {
   const [failedTryCreate, setFailedTryCreate] = useState(false);
   const [btnCreate] = useState([true, true, true]);
   const [isDisabled, setIsDisabled] = useState(true);
-  const Navigate = useNavigate();
+  const Navigate = useHistory();
 
   const createUser = async (event) => {
     event.preventDefault();

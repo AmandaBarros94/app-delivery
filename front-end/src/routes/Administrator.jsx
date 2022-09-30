@@ -1,13 +1,13 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import AdminProvider from '../contexts/AdminContext/Provider';
 import { Administrator } from '../pages';
 
 export default function AdministratorRoute() {
   return (
     <AdminProvider>
-      <Routes>
+      <Switch>
         <Route path="/admin/manage" element={ <Administrator /> } />
-      </Routes>
+      </Switch>
     </AdminProvider>
   );
 }
