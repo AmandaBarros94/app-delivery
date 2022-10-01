@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import replaceDotToSemiColon from '../../utils/replace/replaceDotToSemiColon';
-
+import replaceDotToSemiColon from '../../utils/replaceDotToSemiColon';
 import QuantityInput from '../Inputs/Quantity/QuantityInput';
 import stringToNumber from '../../utils/stringToNumber';
 import OrderContext from '../../context/order/OrderContext';
@@ -11,7 +10,7 @@ const dataTestIdImg = 'customer_products__img-card-bg-image-';
 const dataTestIdDescription = 'customer_products__element-card-title-';
 const imagesPath = 'http://localhost:3001/images/';
 
-const ProductCard = ({ id, description, price, img }) => {
+function ProductCard({ id, description, price, img }) {
   const { cart, setCart } = useContext(OrderContext);
   const [productId] = useState(id);
   const [productDescription] = useState(description);
@@ -38,7 +37,7 @@ const ProductCard = ({ id, description, price, img }) => {
     if (quantity === 0) return setCart(filteredCart);
 
     setCart([...filteredCart, updatedProduct]);
-  }, [subTotal]); // ** only "subtotal" dependency ** **
+  }, [subTotal]);
 
   return (
     <div
@@ -71,7 +70,7 @@ const ProductCard = ({ id, description, price, img }) => {
       </div>
     </div>
   );
-};
+}
 
 ProductCard.propTypes = {
   id: PropTypes.string,
