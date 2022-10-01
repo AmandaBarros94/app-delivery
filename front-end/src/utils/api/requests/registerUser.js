@@ -1,7 +1,7 @@
 import api from '..';
 
-const registerCommonUser = async (userInfos) => api.post('/users/register', {
+const registerUser = async (userInfos) => api.post('/users/register', {
   ...userInfos,
 });
 
-export default registerCommonUser;
+export default registerUser;
