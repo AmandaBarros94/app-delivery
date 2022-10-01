@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { requestLogin } from '../../Services/request';
 /* import savLocalStorage from '../../helper/savLocalStorage'; */
 
@@ -10,7 +10,7 @@ function Login() {
   const [isDisabled, setIsDisabled] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
   const [failedTryLogin, setFailedTryLogin] = useState(false);
-  const Navigate = useHistory();
+  const Navigate = useNavigate();
   const REGEX_EMAIL = /\S+@\S+\.\S+/;
 
   const login = async (event) => {
@@ -57,7 +57,7 @@ function Login() {
   }, [email, password]);
 
   if (isLogged) {
-    Navigate.push('/consumer/products');
+    Navigate('/consumer/products');
   } else {
     return (
       <div>
@@ -105,7 +105,7 @@ function Login() {
           </button>
           <button
             type="button"
-            onClick={ () => Navigate.push('/register') }
+            onClick={ () => Navigate('/register') }
             data-testid="common_login__button-register"
           >
             Register
