@@ -17,7 +17,9 @@ function OrderCardBySeller({ orderCode, statusOrder, dateOrder, priceTotal, addr
     >
       <div>
         <div
-          data-testid={ `seller_orders__element-order-id-${orderCode}` }
+          data-testid={
+            `seller_orders__element-order-id-${orderCode}`
+          }
         >
           Pedido
           {' '}
@@ -25,31 +27,22 @@ function OrderCardBySeller({ orderCode, statusOrder, dateOrder, priceTotal, addr
         </div>
       </div>
 
-      <div
-        className="order-container--bg-gray"
-      >
-        <div
-          className="order-container--bg-gray--container-status"
-        >
+      <div>
+        <div>
           <div
-            className="order-container--bg-gray--container-status--type"
             data-testid={ `seller_orders__element-delivery-status-${orderCode}` }
           >
             <SellerOrderStatus status={ statusOrder } />
           </div>
 
-          <div
-            className="order-container--bg-gray--container-status--date-price"
-          >
+          <div>
             <div
-              className="order-container--bg-gray--container-status--date-price--info"
               data-testid={ `seller_orders__element-order-date-${orderCode}` }
             >
               { dateOrder }
             </div>
 
             <div
-              className="order-container--bg-gray--container-status--date-price--info"
               data-testid={ `seller_orders__element-card-price-${orderCode}` }
             >
               R$
@@ -59,7 +52,6 @@ function OrderCardBySeller({ orderCode, statusOrder, dateOrder, priceTotal, addr
           </div>
         </div>
         <div
-          className="order-container--bg-gray--address"
           data-testid={ `seller_orders__element-card-address-${orderCode}` }
         >
           { address }
