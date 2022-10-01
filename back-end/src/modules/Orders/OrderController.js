@@ -8,7 +8,7 @@ class OrderController {
     
     async createOrder(req, res) {
         const order = req.body;
-    
+        console.log(order);
         const response = await this.orderService.createOrder(order);
     
         return res.status(StatusCodes.CREATED).json(response);

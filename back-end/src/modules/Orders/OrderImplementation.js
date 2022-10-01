@@ -18,24 +18,27 @@ class SaleImplementation {
         this.sequelizeSaleProductModel = sequelizeSaleProductModel;
     }
 
-    async createSale(sale) {
-        const { arrayOfProducts, sellerId, userId, deliveryAddress, deliveryNumber,
-            totalPrice, status } = sale;
-        try {
-            const saleData = await sequelize.transaction(async (transaction) => {
-                const { id: saleId } = await this.sequelizeSaleModel
-                    .create(
-                        { userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status },
-                        { transaction },
-                    );
-              await Promise.all(arrayOfProducts.map(async ({ id, quantity }) => {
-                    await this.sequelizeSaleProductModel
-                    .create({ saleId, productId: id, quantity }, { transaction });
-                }));
-                return { id: saleId, message: 'Your purchase was successfull' };
-            });
-               return saleData;
-        } catch (error) { throw new CustomError(500, error.message); }
+async createSale(saleInfos) {
+    const { arrayOfProducts, sellerId, userId, deliveryAddress, deliveryNumber,
+        totalPrice, status } = saleInfos;
+    
+    try {
+        const saleData = await sequelize.transaction(async (transaction) => {
+            const { id: saleId } = await this.sequelizeSaleModel
+                .create(
+                    { userId, sellerId, totalPrice, deliveryAddress, deliveryNumber, status },
+                    { transaction },
+                );
+
+          await Promise.all(arrayOfProducts.map(async ({ id, quantity }) => {
+                await this.sequelizeSaleProductModel
+                .create({ saleId, productId: id, quantity }, { transaction });
+            }));
+            
+            return { id: saleId, message: 'Your purchase was successfull' };
+        });
+        return saleData;
+    } catch (err) { throw new Error(); }
 }
 
 async getAllSalesByCustomer(customerId) {
@@ -93,6 +96,25 @@ async updateSaleStatus(saleInformation) {
     const { id, status } = saleInformation;
     const sale = await this.sequelizeSaleModel.update({ status }, { where: { id } });
     return sale;
+}
+
+async findUserAndSellerIds(saleInfos) {
+    const { userName, sellerName } = saleInfos;
+
+    const user = await this
+        .sequelizeUserModel.findOne({ where: { name: userName } });
+
+    const seller = await this
+        .sequelizeUserModel.findOne({ where: { name: sellerName } });
+
+    if (!user || !seller) {
+        throw new CustomError(404, 'User or seller not found');
+    }
+
+    const { id: userId } = user;
+    const { id: sellerId } = seller;
+
+    return { userId, sellerId };
 }
 }
 

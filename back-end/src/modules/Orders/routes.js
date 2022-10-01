@@ -8,7 +8,7 @@ const orderRoutes = express.Router();
 
 orderRoutes
     .post('/', 
-    TokenAuthentication.verifyToken, (req, res) => orderController.createOrder(req, res))
+     (req, res) => orderController.createOrder(req, res))
     .get('/customer', 
     TokenAuthentication.verifyToken, (req, res) => orderController.getAllOrdersByCustomer(req, res))
     .get('/seller', 

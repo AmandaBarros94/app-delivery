@@ -77,7 +77,7 @@ function FinalizeOrderDetails() {
             isSubmit
             text="FINALIZAR PEDIDO"
             onClick={ finalizeOrder }
-
+            dataId="customer_checkout__button-finish-order"
           />
         </div>
       </div>

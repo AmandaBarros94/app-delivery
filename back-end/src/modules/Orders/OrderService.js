@@ -6,11 +6,19 @@ class OrderService {
     this.orderImplementation = orderImplementation;
   }
 
-  async createOrder(order) {
-    const response = await this.orderImplementation.createOrder(order);
-     
-    return response;
-  }
+  async createOrder(saleInfos) {
+    const { userId, sellerId } = await this.orderImplementation.findUserAndSellerIds(saleInfos);
+
+    const formattedSale = saleInfos;
+
+    formattedSale.userId = userId;
+    formattedSale.sellerId = sellerId;
+    formattedSale.status = 'Pendente';
+
+    const saleCreationReturn = await this.orderImplementation.createSale(formattedSale);
+
+    return saleCreationReturn;
+}
 
   async getAllOrdersByCustomer(customerId) {
     const response = await this.orderImplementation.getAllOrdersByCustomer(customerId);

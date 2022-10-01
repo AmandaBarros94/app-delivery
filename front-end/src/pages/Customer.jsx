@@ -21,7 +21,6 @@ function Customer() {
     fetchAllproducts();
 
     setUser(getStorage('user'));
-    console.log(user);
   }, []);
 
   return (
