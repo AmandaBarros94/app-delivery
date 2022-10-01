@@ -43,7 +43,7 @@ function Register() {
         />
 
         <PrimaryButton
-          isSubmit={ false }
+          isSubmit
           disable={ !isValid }
           text="CADASTRAR"
           dataId="common_register__button-register"
