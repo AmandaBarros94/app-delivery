@@ -1,14 +1,12 @@
-// import { BrowserRouter } from 'react-router-dom';
-// import UserProvider from './contexts/UserContext/Provider';
-// import { AdministratorRoutes, LoginRoutes } from './routes';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Login from './pages/Login';
 
-// export default function Router() {
-//   return (
-//     <BrowserRouter>
-//       <UserProvider>
-//         <LoginRoutes />
-//         <AdministratorRoutes />
-//       </UserProvider>
-//     </BrowserRouter>
-//   );
-// }
+export default function Router() {
+  return (
+    <Routes>
+      <Route path="/login" element={ <Login /> } />
+      <Route path="/" element={ <Navigate to="/login" /> } />
+      {/* <Route path="/register" element={ <Register /> } /> */}
+    </Routes>
+  );
+}
