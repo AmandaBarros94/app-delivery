@@ -9,6 +9,4 @@ const landingZerosForDates = (date) => {
   return date;
 };
 
-// const landingZerosForDates = (date) => console.log(typeof date);
-
 export default landingZerosForDates;

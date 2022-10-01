@@ -3,7 +3,7 @@ const formatDate = (rawDate) => {
   const newMonth = rawDate.getMonth() + 1;
   const newYear = rawDate.getFullYear();
 
-  const newDate = `${newDay}/${newMonth}/${newYear}`;
+  const newDate = `${`0${newDay}`}/${newMonth}/${newYear}`;
 
   return newDate;
 };
