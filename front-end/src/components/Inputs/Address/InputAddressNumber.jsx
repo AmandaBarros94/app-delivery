@@ -13,7 +13,7 @@ function AddressNumberInput({ numberValue, numberChange }) {
         placeholder="Número da Casa/AP"
         onChange={ numberChange }
         value={ numberValue }
-        data-testid="customer_checkout__input-addressNumber"
+        data-testid="customer_checkout__input-address-number"
       />
 
     </label>

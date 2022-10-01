@@ -80,16 +80,24 @@ async getAllSalesBySeller(sellerId) {
 }
 
 async getSaleById(saleId) {
-    const sale = await this.sequelizeSaleModel.findOne({ where: { id: saleId },
+    const sale = await this.sequelizeSaleModel.findOne({ 
+        where: { id: saleId },
         include: [
-            { model: this.sequelizeUserModel, as: 'customer' },
-            { model: this.sequelizeUserModel, as: 'seller' },
-            { model: this.sequelizeProductModel, as: 'products' },
+            { 
+                model: this.sequelizeProductModel,
+                through: { attributes: ['quantity'] },
+                as: 'salesProducts',
+            },
         ],
-    });
-    const newSale = sale;
-    newSale.totalPrice = sale.totalPrice.replace('.', ',');
-    return newSale;
+     });
+
+     if (!sale) throw new CustomError(404, 'Sale not found');
+
+    const { name } = await this.sequelizeUserModel.findByPk(sale.sellerId);
+
+    sale.sellerName = name;
+
+    return sale;
 }
 
 async updateSaleStatus(saleInformation) {

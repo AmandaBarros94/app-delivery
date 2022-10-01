@@ -6,6 +6,7 @@ import getStorage from '../utils/handleStorage/getStorage';
 import getAllProducts from '../utils/api/requests/getAllProducts';
 import Checkout from './Checkout';
 import CustomerOrders from './CustomerOrders';
+import CustomerOrderById from './CustomerOrderById';
 
 function Customer() {
   const [productsList, setProductsList] = useState([]);
@@ -40,6 +41,10 @@ function Customer() {
         <Route
           path="/orders"
           element={ <CustomerOrders /> }
+        />
+        <Route
+          path="/orders/:id"
+          element={ <CustomerOrderById /> }
         />
 
       </Routes>

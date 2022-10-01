@@ -1,5 +1,7 @@
 const OrderImplementation = require('./OrderImplementation');
 const CustomError = require('../../utils/CustomError');
+const { formatProductDetails } = require('./helpers/formatProductDetails');
+const { formatDate } = require('./helpers/formatDate');
 
 class OrderService {
   constructor(orderImplementation = new OrderImplementation()) {
@@ -37,6 +39,20 @@ class OrderService {
     if (!order) throw new CustomError(404, 'Order not found');
     const response = await this.orderImplementation.updateOrder(orderInformations);
     return response;
+  }
+
+  async getSaleById(saleId) {
+    const foundSale = await this.orderImplementation.getSaleById(saleId);
+
+    const newSale = {
+      id: foundSale.id,
+      totalPrice: foundSale.totalPrice.replace('.', ','),
+      sellerName: foundSale.sellerName,
+      saleDate: formatDate(foundSale.saleDate),
+      status: foundSale.status,
+      productsList: foundSale.salesProducts.map((product) => formatProductDetails(product)),
+  };
+    return newSale;
   }
 }
 

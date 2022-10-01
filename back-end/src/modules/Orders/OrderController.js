@@ -38,6 +38,14 @@ class OrderController {
     
         return res.status(StatusCodes.OK).json(response);
     }
+
+    async getSaleById(req, res) {
+        const { id } = req.params;
+        console.log(id);
+        const response = await this.orderService.getSaleById(id);
+        console.log(response);
+        return res.status(StatusCodes.OK).json(response);
+    }
 }
 
 module.exports = OrderController;

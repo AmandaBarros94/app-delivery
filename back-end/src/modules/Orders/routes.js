@@ -9,6 +9,8 @@ const orderRoutes = express.Router();
 orderRoutes
     .post('/', 
      (req, res) => orderController.createOrder(req, res))
+     .get('/:id',
+     TokenAuthentication.verifyToken, (req, res) => orderController.getSaleById(req, res))
     .get('/customer', 
     TokenAuthentication.verifyToken, (req, res) => orderController.getAllOrdersByCustomer(req, res))
     .get('/seller', 
