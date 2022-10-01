@@ -44,7 +44,7 @@ function FinalizeOrderDetails() {
       },
     );
 
-    navigate(`../orders/${sale.id}`);
+    navigate(`/orders/${sale.id}`);
   };
 
   return (
