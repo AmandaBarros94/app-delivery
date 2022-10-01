@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import dateFormat from '../../utils/dateFormat';
 import changeString from '../../utils/changeString';
 import './Order.css';
@@ -15,7 +15,7 @@ function Order({
   dataTestId,
   addressNumber,
 }) {
-  const Navigate = useHistory();
+  const Navigate = useNavigate();
 
   let isVisible;
 
@@ -32,7 +32,7 @@ function Order({
         <button
           data-testid={ `${dataTestId}order-id-${id}` }
           type="button"
-          onClick={ () => Navigate.push(`/${userRole}/orders/${id}`) }
+          onClick={ () => Navigate(`/${userRole}/orders/${id}`) }
         >
           <h1 data-testid={ `${dataTestId}order-id-${id}` }>
             Pedido:
