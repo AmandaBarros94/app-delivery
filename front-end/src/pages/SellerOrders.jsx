@@ -1,43 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import requestOrders from '../utils/api/requests/requestOrders';
-import Order from '../components/order/Order';
+import React, { useEffect, useState } from 'react';
+import OrderCardBySeller from '../components/cards/OrderCardBySeller';
+import getAllOrdersBySeller from '../utils/api/requests/getAllOrdersBySeller';
+import getStorage from '../utils/handleStorage/getStorage';
 
-function SellerOrders() {
-  const [ordersOfSeller, setOrdersOfSeller] = useState([]);
-  const { saleInfo } = 1; // aqui teria que ter o estadp global buscando pra nós as informações da venda, ( pode ser passado via local storage também mas teria que mexer no login)
+const SellerOrders = () => {
+  const [allOrdersBySeller, setAllOrdersBySeller] = useState([]);
 
   useEffect(() => {
-    const getAllOrders = async () => {
-      await requestOrders(`/sale/${saleInfo.id}`).then( // Aqui deve ser passado o id do vendedor que vem do estado global ou do local storage.
-        (response) => setOrdersOfSeller(response),
-      );
+    const fetchOrdersBySeller = async () => {
+      const { id } = await getStorage('user');
+      const { data: orders } = await getAllOrdersBySeller(id);
+      setAllOrdersBySeller(orders);
     };
-    getAllOrders();
+
+    fetchOrdersBySeller();
   }, []);
 
   return (
-    <div>
-      {/* adicionar o header */}
-      <section className="sales-order--container">
-        {
-          ordersOfSeller.map((item, index) => (
-            <Order
-              key={ index }
-              id={ item.id }
-              status={ item.status }
-              date={ item.saleDate }
-              value={ item.totalPrice }
-              address={ item.deliveryAddress }
-              addressNumber={ item.deliveryNumber }
-              dataTestId="seller_orders__element-"
-              userRole="seller" // o Role passado aqui é dinamico para aparecer ou não o endereço do cliente no card ( vendedor = true, cliente = false)
-            />
-          ))
-        }
-      </section>
-      <button type="button"> test </button>
-    </div>
+    allOrdersBySeller.map((order) => (
+      <OrderCardBySeller
+        key={ order.id }
+        orderCode={ order.id }
+        statusOrder={ order.status }
+        dateOrder={ order.saleDate }
+        priceTotal={ order.totalPrice }
+        address={ order.address }
+      />
+    ))
   );
-}
+};
 
 export default SellerOrders;

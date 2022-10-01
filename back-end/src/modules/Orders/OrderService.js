@@ -36,8 +36,14 @@ class OrderService {
 
   async getAllOrdersBySeller(sellerId) {
     const response = await this.orderImplementation.getAllOrdersBySeller(sellerId);
+
+    const dataFormated = response.map((sale) => {
+      const Sale = { ...sale };
+      Sale.dataValues.saleDate = formatDate(sale.saleDate);
+      return Sale;
+    });
     
-    return response;
+    return dataFormated;
   }
 
   async updateOrder(orderInformations) {

@@ -59,7 +59,7 @@ async getAllOrdersByCustomer(customerId) {
     return productsBought;
 }
 
-async getAllSalesBySeller(sellerId) {
+async getAllOrdersBySeller(sellerId) {
     const productsList = await this.sequelizeUserModel.findOne({ where: { id: sellerId },
         include: [
             { model: this.sequelizeSaleModel,
@@ -69,7 +69,7 @@ async getAllSalesBySeller(sellerId) {
         ],
     });
     if (!productsList) throw new CustomError(404, 'User not found');
-    const productsSold = productsList.sales.map((sale) => {
+    const productsSold = productsList[0].sales.map((sale) => {
             const newSale = sale;
             newSale.totalPrice = sale.totalPrice.replace('.', ',');
             return newSale;
