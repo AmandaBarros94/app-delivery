@@ -12,16 +12,17 @@ function Customer() {
   const { pathname } = useLocation();
   const pathToProducts = '/customer/products';
 
-  useEffect(() => {
-    const fetchAllproducts = async () => {
-      const { data: allProducts } = await getAllProducts();
-      if (pathname === pathToProducts)setProductsList(allProducts);
-    };
+  const fetchAllproducts = async () => {
+    const { data: allProducts } = await getAllProducts();
+    if (pathname === pathToProducts)setProductsList(allProducts);
+  };
 
+  useEffect(() => {
     fetchAllproducts();
 
     setUser(getStorage('user'));
-  }, [pathname]);
+    console.log(user);
+  }, []);
 
   return (
     <div>

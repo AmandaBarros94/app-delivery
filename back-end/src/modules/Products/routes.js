@@ -9,7 +9,6 @@ const productRoutes = express.Router();
 productRoutes
 .get(
     '/',
-    (req, res, next) => TokenAuthentication.verifyToken(req, res, next),
     (req, res) => productController.getAllProducts(req, res),
 )
 .get(

@@ -21,12 +21,13 @@ class ProductImplementation {
     async getAllProducts() {
         const products = await this.ProductModel.findAll();
 
-           return products.map((product) => {
+           const result = products.map((product) => {
             const newProduct = product;
             newProduct.price = product.price.replace('.', ',');
             newProduct.urlImage = formatImageUrl(product.urlImage);
             return newProduct;
            });
+           return result;
     }
 
     async getProductPurchasedByCustomer(id) {
