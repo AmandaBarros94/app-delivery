@@ -4,6 +4,7 @@ import ProductCardsContainer from '../components/cards/ProductCardsContainer';
 import CommonNav from '../components/navs/CommonNav';
 import getStorage from '../utils/handleStorage/getStorage';
 import getAllProducts from '../utils/api/requests/getAllProducts';
+import Checkout from './Checkout';
 
 function Customer() {
   const [productsList, setProductsList] = useState([]);
@@ -31,7 +32,13 @@ function Customer() {
           path="/products"
           element={ <ProductCardsContainer products={ productsList } /> }
         />
+        <Route
+          path="/checkout"
+          element={ <Checkout /> }
+        />
+
       </Routes>
+
     </div>
   );
 }
