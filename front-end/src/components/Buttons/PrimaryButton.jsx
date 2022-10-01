@@ -21,7 +21,7 @@ PrimaryButton.defaultProps = {
 PrimaryButton.propTypes = {
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  isSubmit: PropTypes.string.isRequired,
+  isSubmit: PropTypes.bool.isRequired,
   disable: PropTypes.bool.isRequired,
   dataId: PropTypes.string.isRequired,
 };
