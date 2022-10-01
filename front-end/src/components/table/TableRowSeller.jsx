@@ -1,10 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import OrderContext from '../../context/order/OrderContext';
 
-function TableRow({ item, description, quantity, unitaryValue, subTotal, index }) {
-  const { cart, setCart } = useContext(OrderContext);
-
+function TableRow({ description, quantity, unitaryValue, subTotal, index }) {
   return (
     <tr>
       <td
@@ -41,7 +38,6 @@ function TableRow({ item, description, quantity, unitaryValue, subTotal, index }
 }
 
 TableRow.propTypes = {
-  item: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   quantity: PropTypes.string.isRequired,
   unitaryValue: PropTypes.string.isRequired,

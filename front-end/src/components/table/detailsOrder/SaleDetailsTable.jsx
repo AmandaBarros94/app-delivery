@@ -42,7 +42,6 @@ function SaleDetailsTable({ order: {
             productsList.map(({ name, quantity, price, subTotal }, index) => (
               <TableRow
                 key={ index }
-                item={ id }
                 description={ name }
                 quantity={ quantity }
                 unitaryValue={ price }
