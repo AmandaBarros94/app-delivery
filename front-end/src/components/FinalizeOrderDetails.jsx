@@ -49,10 +49,10 @@ function FinalizeOrderDetails() {
 
   return (
     <div>
-      <div className="address-span">Detalhes e Endereço para Entrega</div>
+      <div>Detalhes e Endereço para Entrega</div>
 
-      <div className="address-container">
-        <div className="address-input-container">
+      <div>
+        <div>
 
           {
             sellers.length && (
@@ -77,7 +77,7 @@ function FinalizeOrderDetails() {
             isSubmit
             text="FINALIZAR PEDIDO"
             onClick={ finalizeOrder }
-            dataId="customer_checkout__button-finish-order"
+            dataId="customer_checkout__button-submit-order"
           />
         </div>
       </div>
