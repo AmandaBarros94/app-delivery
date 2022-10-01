@@ -5,6 +5,7 @@ import CommonNav from '../components/navs/CommonNav';
 import getStorage from '../utils/handleStorage/getStorage';
 import getAllProducts from '../utils/api/requests/getAllProducts';
 import Checkout from './Checkout';
+import CustomerOrders from './CustomerOrders';
 
 function Customer() {
   const [productsList, setProductsList] = useState([]);
@@ -35,6 +36,10 @@ function Customer() {
         <Route
           path="/checkout"
           element={ <Checkout /> }
+        />
+        <Route
+          path="/orders"
+          element={ <CustomerOrders /> }
         />
 
       </Routes>

@@ -7,7 +7,7 @@ function CustomerOrders() {
   const user = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
-    requestOrdersByCustomer(`/customer/orders/user/${user.id}`)
+    requestOrdersByCustomer(`/orders/${user.id}`)
       .then((response) => response)
       .then((result) => setOrders(result));
   }, [user.id]);
