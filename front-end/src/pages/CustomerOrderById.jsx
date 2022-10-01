@@ -7,8 +7,6 @@ function CustomerOrderById() {
   const [order, setOrder] = useState({});
   const { id } = useParams();
 
-  console.log('terste');
-
   useEffect(() => {
     const getSaleById = async () => {
       const { data: sale } = await getOrderById(id);

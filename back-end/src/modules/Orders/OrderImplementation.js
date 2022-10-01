@@ -41,8 +41,8 @@ async createSale(saleInfos) {
     } catch (err) { throw new Error(); }
 }
 
-async getAllSalesByCustomer(customerId) {
-    const productsList = await this.sequelizeUserModel.findOne({ where: { id: customerId },
+async getAllOrdersByCustomer(customerId) {
+    const productsList = await this.sequelizeUserModel.findAll({ where: { id: customerId },
         include: [
             { model: this.sequelizeSaleModel,
                 attributes: { exclude: ['deliveryAddress', 'deliveryNumber'] },
@@ -51,12 +51,11 @@ async getAllSalesByCustomer(customerId) {
         ],
     });
     if (!productsList) throw new CustomError(404, 'User not found');
-    const productsBought = productsList.purchases.map((purchase) => {
+    const productsBought = productsList[0].purchases.map((purchase) => {
             const newPurchase = purchase;
             newPurchase.totalPrice = purchase.totalPrice.replace('.', ',');
             return newPurchase;
         });
-
     return productsBought;
 }
 

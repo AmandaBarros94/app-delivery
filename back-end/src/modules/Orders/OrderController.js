@@ -8,22 +8,22 @@ class OrderController {
     
     async createOrder(req, res) {
         const order = req.body;
-        console.log(order);
+     
         const response = await this.orderService.createOrder(order);
     
         return res.status(StatusCodes.CREATED).json(response);
     }
     
     async getAllOrdersByCustomer(req, res) {
-        const { id } = req.body;
-    
+        const { id } = req.params;
+        
         const response = await this.orderService.getAllOrdersByCustomer(id);
     
         return res.status(StatusCodes.OK).json(response);
     }
     
     async getAllOrdersBySeller(req, res) {
-        const { id } = req.user;
+        const { id } = req.params;
     
         const response = await this.orderService.getAllOrdersBySeller(id);
     
@@ -41,9 +41,9 @@ class OrderController {
 
     async getSaleById(req, res) {
         const { id } = req.params;
-        console.log(id);
+       
         const response = await this.orderService.getSaleById(id);
-        console.log(response);
+       
         return res.status(StatusCodes.OK).json(response);
     }
 }

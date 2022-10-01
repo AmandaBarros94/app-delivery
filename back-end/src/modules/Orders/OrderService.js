@@ -25,7 +25,13 @@ class OrderService {
   async getAllOrdersByCustomer(customerId) {
     const response = await this.orderImplementation.getAllOrdersByCustomer(customerId);
 
-    return response;
+    const dataFormated = response.map((sale) => {
+      const newSale = { ...sale };
+      newSale.dataValues.saleDate = formatDate(sale.saleDate);
+      return newSale;
+    });
+    
+    return dataFormated;
   }
 
   async getAllOrdersBySeller(sellerId) {

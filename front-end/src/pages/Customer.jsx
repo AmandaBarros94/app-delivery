@@ -7,6 +7,7 @@ import getAllProducts from '../utils/api/requests/getAllProducts';
 import Checkout from './Checkout';
 import CustomerOrders from './CustomerOrders';
 import CustomerOrderById from './CustomerOrderById';
+import Orders from './Orders';
 
 function Customer() {
   const [productsList, setProductsList] = useState([]);
@@ -39,9 +40,15 @@ function Customer() {
           element={ <Checkout /> }
         />
         <Route
-          path="/orders"
+          path="/xablau"
           element={ <CustomerOrders /> }
         />
+
+        <Route
+          path="/orders"
+          element={ <Orders /> }
+        />
+
         <Route
           path="/orders/:id"
           element={ <CustomerOrderById /> }
