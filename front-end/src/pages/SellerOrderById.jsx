@@ -11,7 +11,7 @@ function SellerOrderById() {
   useEffect(() => {
     const getSaleById = async () => {
       const { data: sale } = await getOrderById(id);
-
+      console.log(sale);
       getorderObject(sale);
     };
 
@@ -22,7 +22,7 @@ function SellerOrderById() {
     <div>
       {
         (orderObject.id)
-        && <OrderDetailsTable orderInfo={ orderObject } />
+        && <OrderDetailsTable order={ orderObject } />
       }
     </div>
   );

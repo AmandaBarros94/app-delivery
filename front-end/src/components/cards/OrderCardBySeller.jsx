@@ -11,7 +11,7 @@ function OrderCardBySeller({ orderCode, statusOrder, dateOrder, priceTotal, addr
   return (
     <div
       onClick={ () => redirect(`${orderCode}`) }
-      onKeyDown={ () => {} }
+      onKeyDown={ () => redirect(`${orderCode}`) }
       role="button"
       tabIndex={ 0 }
     >

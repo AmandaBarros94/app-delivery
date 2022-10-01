@@ -68,13 +68,14 @@ async getAllOrdersBySeller(sellerId) {
             },
         ],
     });
+
     if (!productsList) throw new CustomError(404, 'User not found');
-    const productsSold = productsList[0].sales.map((sale) => {
+    const productsSold = productsList.sales.map((sale) => {
             const newSale = sale;
             newSale.totalPrice = sale.totalPrice.replace('.', ',');
             return newSale;
         });
-
+   
     return productsSold;
 }
 

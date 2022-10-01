@@ -10,6 +10,7 @@ const SellerOrders = () => {
     const fetchOrdersBySeller = async () => {
       const { id } = await getStorage('user');
       const { data: orders } = await getAllOrdersBySeller(id);
+      console.log(orders);
       setAllOrdersBySeller(orders);
     };
 
@@ -19,12 +20,12 @@ const SellerOrders = () => {
   return (
     allOrdersBySeller.map((order) => (
       <OrderCardBySeller
-        key={ order.id }
-        orderCode={ order.id }
-        statusOrder={ order.status }
-        dateOrder={ order.saleDate }
-        priceTotal={ order.totalPrice }
-        address={ order.address }
+        key={ order.dataValues.id }
+        orderCode={ order.dataValues.id }
+        statusOrder={ order.dataValues.status }
+        dateOrder={ order.dataValues.saleDate }
+        priceTotal={ order.dataValues.totalPrice }
+        address={ order.dataValues.address }
       />
     ))
   );
