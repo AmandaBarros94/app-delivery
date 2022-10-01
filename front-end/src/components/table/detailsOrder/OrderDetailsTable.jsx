@@ -24,16 +24,16 @@ function OrderDetailsTable({ order: {
         status={ status }
       />
 
-      <table className="base-table">
+      <table>
         <caption>Detalhes pedido</caption>
 
         <thead>
           <tr>
-            <th className="base-table__cell">Item</th>
-            <th className="base-table__cell">Descrição</th>
-            <th className="base-table__cell">Quantidade</th>
-            <th className="base-table__cell">Valor Unitário</th>
-            <th className="base-table__cell">Sub-total</th>
+            <th>Item</th>
+            <th>Descrição</th>
+            <th>Quantidade</th>
+            <th>Valor Unitário</th>
+            <th>Sub-total</th>
           </tr>
         </thead>
 
