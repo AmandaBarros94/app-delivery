@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import replaceDotToSemiColon from '../../utils/replaceDotToSemiColon';
-import TableRow from './TableRow';
+import TableRow from './TableRowSeller';
 import OrderContext from '../../context/order/OrderContext';
 
 function FinalizeOrderTable() {
