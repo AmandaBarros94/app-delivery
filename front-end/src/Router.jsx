@@ -9,11 +9,11 @@ export default function Router() {
   return (
     <Routes>
       <Route path="/login" element={ <Login /> } />
-      <Route exact path="/" element={ <Navigate to="/login" /> } />
       <Route path="/register" element={ <Register /> } />
       <Route path="/customer/*" element={ <Customer /> } />
       <Route path="/seller/*" element={ <Seller /> } />
       <Route path="/admin/manage" element={ <Admin /> } />
+      <Route exact path="/" element={ <Navigate to="/login" /> } />
     </Routes>
   );
 }
